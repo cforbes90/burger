@@ -1,0 +1,28 @@
+body {
+	background-color: #e9d36b;
+	font-family: 'Montserrat', sans-serif;
+
+}
+
+/*.container {
+	margin-top: 50px;
+}
+*/
+h1 {
+	color: #971515;
+}
+
+.list-group-item {
+	background-color: #f1f1ed;
+	font-size: large;
+
+}
+
+h4 {
+	color: #155580;
+}
+
+img {
+	width: 150px;
+
+}

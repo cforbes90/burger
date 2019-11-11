@@ -1,0 +1,173 @@
+<div class="jumbotron main-jumbotron">
+<h1>EAT-DA-BURGER!</h1>
+<img src="assets/img/burger.png" alt="C-137 Burgers">
+</div>
+
+<main class="container">
+  <div class="row">
+    <div class="col-12 col-md-4 order-md-2 text-center">
+      <h5 class="text-center">
+      Order Here!!!
+      </h5>
+      <form class="create-burger-form" action="/api/newburger" method="POST">
+        <div class="form-group">
+          {{!-- <label for="new-burger-input">New Burger Name</label> --}}
+          <input type="input" class="form-control" id="new-burger-input" aria-describedby="newBurger" placeholder="Enter Burger Name">
+          <small id="burgerHelp" class="form-text text-light">Enter Some Super Delicious Burger Name</small>
+          <br>
+          <button type="submit" class="btn btn-success add-burger">Order Up!</button>
+        </div>
+      </form>
+      <br>
+    </div>
+
+
+    <div class="col-6 col-md-4 order-md-1">
+
+      <h3 class="text-center">
+      Ready for Pickup!
+      </h3>
+
+      <div class="container">
+      </div>
+      <ul class="list-group">
+        {{#each burgers}}
+          {{#unless devoured}}
+           
+            <li class="list-group-item">
+                 {{> burger/burger-block devoured=false}}
+
+            <div class="input-group">
+
+              <span class="input-group-btn">
+                         </span>
+            
+            </div>
+          
+          </li>
+          {{/unless}}
+        {{/each}}
+        
+       
+</ul class="list-group-item">
+    </div>
+
+    <div class="col-6 col-md-4 order-md-3">
+
+      <h5 class="text-center">
+      Gone but never forgotten
+      </h5>
+
+      <div class="container">
+      </div>
+        {{#each burgers}}
+          {{#if devoured}}
+          <li class="list-group-item">
+            {{> burger/burger-block devoured=true}}
+             <div class="input-group">
+
+              <span class="input-group-btn">
+                         </span>
+            
+            </div>
+          
+          </li>
+          {{/if}}
+        {{/each}}
+    </div>
+
+  </div>
+
+</main>
+
+
+
+
+
+
+
+
+<h1>Eat-Da-Burger!</h1>
+
+  <div class="row">
+
+    <div class="col-md-4">
+
+      <h4>BURGERS TO DEVOUR!</h4>
+
+        <ul class="list-group">
+
+        {{#each burgers}}
+          {{#unless this.devoured}}
+
+          <li class="list-group-item">
+
+            <div class="input-group">
+
+              <p> {{this.burger_name}} </p>
+
+              <span class="input-group-btn">
+
+                <form action="/{{this.id}}?_method=PUT" method="POST">
+                  <input type="hidden" name="devoured" value="true">
+                  <button class="btn btn-default btn-sm" type="submit"> Devour It! </button>
+                </form>
+              
+              </span>
+            
+            </div>
+          
+          </li>
+
+          {{/unless}}
+        {{/each}}
+
+      </ul>
+
+    </div>
+
+    <div class="col-md-4">
+
+      <h4>DEVOURED! YUM!</h4>
+
+      <div class="panel panel-default">
+
+        <ul class="list-group">
+
+        {{#each burgers}}
+          {{#if this.devoured}}
+
+          <li class="list-group-item">
+
+            <p>{{this.burger_name}} </p>
+
+          </li>
+
+          {{/if}}
+        {{/each}}
+
+        </ul>
+
+      </div>
+
+    </div>
+
+
+  <div class="row">
+
+  <div class="col-md-8">
+
+    <p> Enter the name of the burger you want to eat and click submit! </p>
+
+    <form class="create-update-form" action="/" method="POST">
+
+      <div class="form-group">
+        <textarea class="form-control input-md" type="text" name="name" rows="3"> </textarea>
+      </div>
+
+      <button class="btn btn-default btn-lg" type="submit">Add Burger!</button>
+    </form>
+
+  </div>
+
+  </div>

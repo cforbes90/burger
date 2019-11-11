@@ -1,0 +1,26 @@
+
+<div class="row burger-item">
+  <div class="col-sm-12 col-lg-6">
+    <small>
+    {{id}}.{{burger_name}}
+    </small>
+  </div>
+
+  <div class="col-sm-12 col-lg-6 text-center">
+    {{#if devoured}}
+    <button class="btn btn-sm btn-info clone-burger" data-id="{{id}}" data-burger_name="{{burger_name}}">
+      <small>
+        <i class="far fa-clone"></i> CLONE
+      </small>
+    </button>
+    {{else}}
+    <button class="btn btn-sm btn-warning eat-burger" data-id="{{id}}" data-burger_name="{{burger_name}}">
+      <small>
+        <i class="fas fa-cookie-bite"> EAT ME!</i>
+      </small>
+    </button>
+    {{/if}}
+   
+  </div>
+
+</div>
