@@ -6,7 +6,7 @@ const router = express.Router();
 const burger = require(`../models/model-burger.js`);
 
 //Creating the routes the controller handles and directs
-router.get(`/`, (req, res) =>{
+router.get("/", (req, res) =>{
     burger.all((dbInfo) =>{
         let objectForHandlebars= {
             burgers: dbInfo
