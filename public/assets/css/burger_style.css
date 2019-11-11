@@ -14,11 +14,15 @@ h1 {
 
 .list-group-item {
 	background-color: #f1f1ed;
+	font-size: large; 
+
+ }
+/* ul {
+	background-color: #f1f1ed;
 	font-size: large;
 
-}
-
-h4 {
+} */
+h3 {
 	color: #155580;
 }
 

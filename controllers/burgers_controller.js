@@ -6,30 +6,37 @@ const router = express.Router();
 const burger = require(`../models/model-burger.js`);
 
 //Creating the routes the controller handles and directs
-router.get(`/`, function (req, res) {
-    burger.all(function(dbInfo) {
+router.get(`/`, (req, res) =>{
+    burger.all((dbInfo) =>{
         let objectForHandlebars= {
             burgers: dbInfo
         };
+        console.log("Below is the object for Handlbaras");
         console.log(objectForHandlebars);
         res.render(`index`, objectForHandlebars);
     });
 });
 
 router.post("/api/newburger", function(req, res) {
-  console.log(`This is req.body: ${req.body}`);
+  console.log(`This is req.body.data:`, req.body.data);
+  console.log(`This is req.body.data.burger_name:`, req.body.data.burger_name);
+
   burger.create([
-    "burger_name", "devoured"
-  ], [
-    req.body.burger_name, req.body.devoured
-  ], function(result) {
+    "burger_name"], [req.body.data.burger_name], function(result) {
+    
     // Send back the ID of the new quote
+    console.log("Result is below");
+    console.log(result)
+
     res.json({ id: result.insertId });
+    // res.redirect("/");
   });
 });
 
 
 router.put("/api/burger/devour/:id", function(req, res) {
+  console.log('req:');
+  console.log(req);
   var condition = "id = " + req.params.id;
 
   burger.update({
@@ -41,6 +48,7 @@ router.put("/api/burger/devour/:id", function(req, res) {
     } else {
       res.status(200).end();
     }
+    // res.redirect("/");
   });
 });
 

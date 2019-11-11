@@ -1,12 +1,14 @@
 
-$(".create-burger-form").on("submit", function (event) {
+$(".create-burger-form").on("submit", function (e) {
     // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
+    e.preventDefault();
+    console.log ("The create burger form was clicked");
     // Send the POST request.
     createNewBurger();
 });
-$(".eat-burger").on("click", function (event) {
+$(".eat-burger").on("click", function (e) {
+    e.preventDefault();
+    console.log ("The eat burger form was clicked");
     var id = $(this).data("id");
 
     var burgerChanged = {
@@ -29,8 +31,10 @@ $(".eat-burger").on("click", function (event) {
 createNewBurger = function () {
     var newBurger = {
         burger_name: $("#new-burger-input").val().trim(),
-        devoured: 0
+       // devoured: 0
     };
+    console.log("Below is newBurger");
+    console.log(newBurger);
     $.post("/api/newburger", {
         type: "POST",
         data: newBurger
